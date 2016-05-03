@@ -373,7 +373,7 @@ class MongoCollection
      * @throws MongoCursorException
      * @return boolean
      */
-    public function update(array $criteria , array $newobj, array $options = [])
+    public function update($criteria , $newobj, array $options = [])
     {
         $multiple = isset($options['multiple']) ? $options['multiple'] : false;
         $isReplace = ! \MongoDB\is_first_key_operator($newobj);
@@ -422,7 +422,7 @@ class MongoCollection
      * @return bool|array Returns an array containing the status of the removal
      * if the "w" option is set. Otherwise, returns TRUE.
      */
-    public function remove(array $criteria = [], array $options = [])
+    public function remove($criteria = [], array $options = [])
     {
         $multiple = isset($options['justOne']) ? !$options['justOne'] : true;
         $method = $multiple ? 'deleteMany' : 'deleteOne';
@@ -457,7 +457,7 @@ class MongoCollection
      * @param array $fields Fields of the results to return.
      * @return MongoCursor
      */
-    public function find(array $query = [], array $fields = [])
+    public function find($query = [], array $fields = [])
     {
         $cursor = new MongoCursor($this->db->getConnection(), (string) $this, $query, $fields);
         $cursor->setReadPreference($this->getReadPreference());

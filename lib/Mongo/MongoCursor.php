@@ -88,7 +88,7 @@ class MongoCursor extends AbstractCursor implements Iterator
      * @param array $query Database query.
      * @param array $fields Fields to return.
      */
-    public function __construct(MongoClient $connection, $ns, array $query = array(), array $fields = array())
+    public function __construct(MongoClient $connection, $ns, $query = array(), array $fields = array())
     {
         parent::__construct($connection, $ns);
 
